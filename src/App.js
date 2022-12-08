@@ -1,8 +1,11 @@
 import { Route, Routes } from "react-router-dom";
+import { ProtectedAdminRoute } from "./components/ProtectedAdminRoute";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { AuthContextComponent } from "./context/authContext";
+import { CreateProduct } from "./pages/CreateProduct";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
+import { Products } from "./pages/Products";
 import { Profile } from "./pages/Profile";
 import { Signup } from "./pages/Signup";
 
@@ -17,6 +20,11 @@ function App() {
           <Route
             path="/perfil"
             element={<ProtectedRoute Component={Profile} />}
+          />
+          <Route path="/produtos" element={<Products />} />
+          <Route
+            path="/admin/new-product"
+            element={<ProtectedAdminRoute Component={CreateProduct} />}
           />
         </Routes>
       </AuthContextComponent>
