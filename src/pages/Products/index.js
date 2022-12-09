@@ -32,6 +32,21 @@ export function Products() {
     }
   }
 
+  async function handleCreateOrder(productId, productPrice) {
+    try {
+      const response = await api.post("/order", {
+        amount: productPrice,
+        product: productId,
+      });
+
+      console.log(response.data);
+
+      // navigate para a pagina de myOrders
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <>
       {products.map((currentProduct) => {
@@ -41,7 +56,13 @@ export function Products() {
             <p>{currentProduct.price}</p>
 
             {loggedInUser ? (
-              <button className={currentProduct.stockQuantity === 0 ? "" : ""}>
+              <button
+                onClick={() => {
+                  handleCreateOrder(currentProduct._id, currentProduct.price);
+                }}
+                disabled={currentProduct.stockQuantity === 0 ? true : false}
+                className={currentProduct.stockQuantity === 0 ? "" : ""}
+              >
                 {currentProduct.stockQuantity === 0 ? "Esgotado" : "Comprar"}
               </button>
             ) : (

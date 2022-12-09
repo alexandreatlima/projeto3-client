@@ -5,6 +5,7 @@ import { AuthContextComponent } from "./context/authContext";
 import { CreateProduct } from "./pages/CreateProduct";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
+import { MyOrders } from "./pages/MyOrders";
 import { Products } from "./pages/Products";
 import { Profile } from "./pages/Profile";
 import { Signup } from "./pages/Signup";
@@ -25,6 +26,11 @@ function App() {
           <Route
             path="/admin/new-product"
             element={<ProtectedAdminRoute Component={CreateProduct} />}
+          />
+
+          <Route
+            path="/minhas-compras"
+            element={<ProtectedRoute Component={MyOrders} />}
           />
         </Routes>
       </AuthContextComponent>
