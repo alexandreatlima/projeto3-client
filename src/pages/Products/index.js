@@ -54,6 +54,7 @@ export function Products() {
           <div>
             <h2>{currentProduct.name}</h2>
             <p>{currentProduct.price}</p>
+            <img src={currentProduct.img} alt="Teste" />
 
             {loggedInUser ? (
               <button
